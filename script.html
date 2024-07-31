@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            
+           background-color:pink;
+       
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            button{
+                margin-top: 6rem;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                cursor: pointer;
+                
+            }
+            #rockbtn{
+                background-color:white ;
+                border: 0px;
+            }
+            #rockbtn:hover{
+                background-color:saddlebrown;
+                color:white;
+            }
+            #paperbtn{
+                background-color:white ;
+                
+                border: 0px;
+                }
+            #paperbtn:hover{
+                background-color:lightblue ;
+                color:white;
+            }
+            #scissorbtn{
+                background-color:white ;
+                    
+                border: 0px;
+            }
+             #scissorbtn:hover{
+                background-color: silver;
+                color:white;
+            }
+            
+            #para{
+                background-color: #081b31;
+                color: #fff;
+                
+                
+                padding: 1rem;
+                border-radius: 1rem;
+                
+            }
+            #res{
+                background-color: #081b31;
+                color: #fff;
+                
+                
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="button">
+            <button id="rockbtn">Rock</button>
+            <button id="paperbtn">Paper</button>
+            <button id="scissorbtn">Scissor</button>
+        </div>
+        <div class="msg">
+            <p id="para">Play your move</p>
+ 
+            <p id="res">Play to know winner</p>
+        </div>
+       
+    </div>
+ 
+   
+    
+    
+    <script>
+        let rockbtn=document.querySelector("#rockbtn");
+        let paperbtn=document.querySelector("#paperbtn");
+        let scissorbtn=document.querySelector("#scissorbtn");
+        let para=document.querySelector("#para");
+        let res=document.querySelector("#res");
+
+
+        
+        rockbtn.addEventListener("click",()=>{
+            return allchoice("rock");
+
+        })
+        paperbtn.addEventListener("click",()=>{
+            return allchoice("paper");
+
+        })
+    scissorbtn.addEventListener("click",()=>{
+           return allchoice("scissor");
+
+        })
+
+        function getchoice(){
+            let option=["rock", "paper","scissor"];
+            let computerchoice=option[Math.floor(Math.random()*3)];
+            
+            return computerchoice;
+        }
+        function allchoice(userchoice){
+            let computerchoice=getchoice();
+            para.innerHTML=`Player choice= ${userchoice} and Computer choice=${computerchoice} `;
+            checkwin(userchoice,computerchoice);
+        }
+    
+        function checkwin(userchoice,computerchoice){
+            if(userchoice==computerchoice){
+                res.innerHTML="It's a tie";
+                }
+            else if(userchoice==="rock"){
+                if(computerchoice==="scissor"){
+                    res.innerHTML="Player wins";
+                    }
+                    else{
+                        res.innerHTML="Computer wins";
+                        }
+            }
+            else if(userchoice==="scissor"){
+                if(computerchoice==="paper"){
+                    res.innerHTML="Player wins";
+                    }
+                    else{
+                        res.innerHTML="Computer wins";
+                        }
+            }
+            else{
+                if(computerchoice==="rock"){
+                    res.innerHTML="Player wins";
+                    }
+                    else{
+                        res.innerHTML="Computer wins";
+                        }
+            }
+    
+        }
+      
+
+        </script>
+    
+</body>
+</html>
